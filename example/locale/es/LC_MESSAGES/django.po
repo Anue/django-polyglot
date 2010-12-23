@@ -1,0 +1,23 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-12-23 09:34-0600\n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: books/templates/books/books.html:13
+msgid "Name"
+msgstr "Nombre"
+
+#: books/templates/books/books.html:14
+msgid "Description"
+msgstr "Descripción"
+
+#: books/templates/books/books.html:15
+msgid "ISBN"
+msgstr "ISBN"
