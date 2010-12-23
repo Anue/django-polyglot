@@ -1,0 +1,24 @@
+[
+    {
+        "pk": 1, 
+        "model": "books.book", 
+        "fields": {
+            "es_name": "Tierra de Lisp", 
+            "en_name": "Land Of Lisp", 
+            "en_description": "Amazing Lisp related programming book", 
+            "isbn": "123456", 
+            "es_description": "Incre\u00edble libro sobre programaci\u00f3n en Lisp"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "books.book", 
+        "fields": {
+            "es_name": "Libro Django", 
+            "en_name": "Django Book", 
+            "en_description": "Free book about the Django Web framework", 
+            "isbn": "098765", 
+            "es_description": "Libro gratuito sobre el framework Web Django"
+        }
+    }
+]

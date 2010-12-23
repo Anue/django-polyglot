@@ -1,0 +1,26 @@
+{% load i18n %}
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Books</title>
+  </head>
+  <body>
+    <h3>Books</h3>
+    <table id="books">
+      <tr>
+        <th>{% trans "Name" %}</th>
+        <th>{% trans "Description" %}</th>
+        <th>{% trans "ISBN" %}</th>
+      </tr>
+      {% for book in books %}
+      <tr>
+        <td>{{ book.name }}</td>
+        <td>{{ book.description }}</td>
+        <td>{{ book.isbn }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

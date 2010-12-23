@@ -1,0 +1,3 @@
+django
+PIL
+-e git://github.com/Anue/django-polyglot.git#egg=polyglot
