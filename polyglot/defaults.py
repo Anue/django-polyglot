@@ -1,6 +1,9 @@
 from django.conf import settings
 
 # name of the field that holds the object's language
+# this is only useful when translations are stored in different
+# instances and each instance contain a field which stores the
+# language code for it
 MANAGER_LANG_FIELD = getattr(settings, "POLYGLOT_MANAGER_LANG_FIELD", 'language')
 
 # default behavior when normalizing a field name
