@@ -36,5 +36,7 @@ class LanguageManager(models.Manager):
         for field in fields:
             field_name = helpers.format_field_name(field)
             qlist.append(Q(**{field_name: ''}))
-        q = reduce(operator.or_, qlist)
-        return self.get_query_set().exclude(q)
+        if qlist:
+            return self.get_query_set().exclude(reduce(operator.or_, qlist))
+        else:
+            return self.get_query_set()

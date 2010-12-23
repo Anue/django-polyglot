@@ -16,12 +16,12 @@ if sys.argv[1] == 'test':
         ('es', u'Español'),
     )
 
-    @normalize_fields_pre
+    @auto_normalize_fields(field_format='prefix')
     class TestPre(models.Model):
         en_test = models.CharField(max_length=32)
         es_test = models.CharField(max_length=32)
 
-    @normalize_fields_post
+    @auto_normalize_fields(field_format='suffix')
     class TestPost(models.Model):
         test_en = models.CharField(max_length=32)
         test_es = models.CharField(max_length=32)

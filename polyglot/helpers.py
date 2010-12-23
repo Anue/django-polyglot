@@ -13,7 +13,7 @@ def format_field_name(normalized_field_name,
         field_name = "%s_%s" % (normalized_field_name, language)
     return field_name
 
-def normalize_field_name(normalized_field_name,
+def normalize_field_name(field_name,
                          field_format=defaults.FIELD_FORMAT):
     """Return field name without language prefix/suffix"""
     if field_format == 'prefix':

@@ -1,8 +1,8 @@
 from django import template
 from django.utils import translation
 from django.conf import settings
-from ..polyglot import defaults
-from ..polyglot.helpers import format_field_name
+from polyglot import defaults
+from polyglot.helpers import format_field_name
 
 register = template.Library()
 
