@@ -1,10 +1,10 @@
-from django.conf import settings
-from django.utils import translation
-from polyglot import defaults
-from polyglot import helpers
-from django.utils.translation import ugettext_lazy as _
+import functools
 
-__all__ = ['auto_normalize_fields', 'normalize_fields']
+from django.utils import translation
+from polyglot import defaults, helpers
+
+
+__all__ = ['auto_normalize', 'auto_normalize_prefix', 'auto_normalize_suffix', 'normalize']
 
 def __get_field_name(self, normalized_field_name, field_format=defaults.FIELD_FORMAT):
     """get the actual field name from the normalized field name and
@@ -33,7 +33,7 @@ def __set_descriptor(cls, normalized_field_name, field_format=defaults.FIELD_FOR
     )
     setattr(cls, normalized_field_name, property(getattr(cls, getter_name),getattr(cls, setter_name)))
 
-def auto_normalize_fields(*args, **kwargs):
+def __auto_normalize(field_format=defaults.FIELD_FORMAT, *args, **kwargs):
     """Automatically Creates properties for the fields on the
     decorated class which allow accessing to the correct i18nized
     field according the selected language.
@@ -42,7 +42,6 @@ def auto_normalize_fields(*args, **kwargs):
     could access that specific field through the mytable property.
 
     """
-    field_format = kwargs.get('field_format', defaults.FIELD_FORMAT)
     def wrap(cls):
         current_language = translation.get_language()[:2]
         fields = [f.name for f in cls._meta.local_fields]
@@ -55,7 +54,11 @@ def auto_normalize_fields(*args, **kwargs):
         return cls
     return wrap
 
-def normalize_fields(*fields, **kwargs):
+auto_normalize = functools.partial(__auto_normalize)()
+auto_normalize_prefix = functools.partial(__auto_normalize, field_format='prefix')()
+auto_normalize_suffix = functools.partial(__auto_normalize, field_format='suffix')()
+
+def normalize(*fields, **kwargs):
     """Creates properties for the fields passed as parameters on the
     decorated class which allow accessing to the correct i18nized
     field according the selected language.
