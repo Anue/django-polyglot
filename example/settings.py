@@ -33,7 +33,7 @@ TIME_ZONE = 'America/Chicago'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
-LOCALE_PATHS = ('locale/',) 
+LOCALE_PATHS = ('locale/',)
 
 SITE_ID = 1
 
@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'polyglot.middleware.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'example.urls'

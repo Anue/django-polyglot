@@ -12,4 +12,4 @@ class Book(models.Model):
     isbn = models.CharField(max_length=16)
 
     def __unicode__(self):
-        return self.es_name
+        return self.name
