@@ -1,6 +1,7 @@
 from django.db.models.base import ModelBase as dmodel
 from django.conf import settings
 from django.core.management.base import NoArgsCommand
+from django.utils.translation import ugettext_lazy as _
 
 apps = [app for app in settings.INSTALLED_APPS if not app.startswith('django.')]
 
@@ -24,11 +25,11 @@ for model in managed_models:
         if not tobj.translation:
             tobj.translation = obj
             tobj.save()
-            print "Normalized translation for: %s (%s | id: %d)" % (tobj, model,  tobj.pk)
+            print _(u"Normalized translation for: %s (%s | id: %d)" % (tobj, model,  tobj.pk))
 
 
 class Command(NoArgsCommand):
-    help = "Automatically normalizes translation relationships between objects"
+    help = _(u"Automatically normalizes translation relationships between objects")
     requires_model_validation = False
 
     def handle_noargs(self, **options):

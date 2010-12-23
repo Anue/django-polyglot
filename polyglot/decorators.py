@@ -2,10 +2,15 @@ from django.conf import settings
 from django.utils import translation
 from polyglot import defaults
 from polyglot import helpers
+from django.utils.translation import ugettext_lazy as _
 
 __all__ = ['auto_normalize_fields', 'normalize_fields']
 
 def __get_field_name(self, normalized_field_name, field_format=defaults.FIELD_FORMAT):
+    """get the actual field name from the normalized field name and
+    the language.
+
+    """
     current_language = translation.get_language()[:2]
     if field_format == 'prefix':
         field_name = "%s_%s" % (current_language, normalized_field_name)
@@ -14,6 +19,7 @@ def __get_field_name(self, normalized_field_name, field_format=defaults.FIELD_FO
     return field_name
 
 def __set_descriptor(cls, normalized_field_name, field_format=defaults.FIELD_FORMAT):
+    """Set descriptor for field names with translation fields"""
     getter_name = "%s_%s" % (defaults.GETTER_PREFIX, normalized_field_name)
     setter_name = "%s_%s" % (defaults.SETTER_PREFIX, normalized_field_name)
     setattr(cls, '__get_field_name', __get_field_name)
@@ -33,7 +39,9 @@ def auto_normalize_fields(*args, **kwargs):
     field according the selected language.
 
     For instance if the language is 'en' and you have en_mytable, you
-    could access that specific field through the mytable property."""
+    could access that specific field through the mytable property.
+
+    """
     field_format = kwargs.get('field_format', defaults.FIELD_FORMAT)
     def wrap(cls):
         current_language = translation.get_language()[:2]
@@ -49,11 +57,13 @@ def auto_normalize_fields(*args, **kwargs):
 
 def normalize_fields(*fields, **kwargs):
     """Creates properties for the fields passed as parameters on the
-    decorated class which allow accessing to the correct i18nized field
-    according the selected language.
+    decorated class which allow accessing to the correct i18nized
+    field according the selected language.
 
     For instance if the language is 'en' and you have en_mytable, you
-    could access that specific field through the mytable property."""
+    could access that specific field through the mytable property.
+
+    """
     field_format = kwargs.get('field_format', defaults.FIELD_FORMAT)
     def wrap(cls):
         for normalized_field_name in fields:

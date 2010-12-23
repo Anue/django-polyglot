@@ -3,6 +3,7 @@ from django.db.models.sql.constants import QUERY_TERMS
 from polyglot.helpers import format_field_name
 
 def QT(field_lookup, value):
+    """Q wrapper for automatic field names translations"""
     lookup_pos = -1
     for lookup in QUERY_TERMS.keys():
         ltemp = field_lookup.rfind(lookup)
@@ -29,4 +30,5 @@ def QT(field_lookup, value):
     return Q(**kwargs)
 
 def T(normalized_field_name):
+    """Django like wrapper for language fields"""
     return format_field_name(normalized_field_name)

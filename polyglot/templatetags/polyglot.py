@@ -3,6 +3,7 @@ from django.utils import translation
 from django.conf import settings
 from ..polyglot import defaults
 from ..polyglot.helpers import format_field_name
+
 register = template.Library()
 
 def polyglot_trans(parser, token):
@@ -36,8 +37,9 @@ def polyglot_trans(parser, token):
 
 
 class PolyglotTransNode(template.Node):
-
+    """"""
     def __init__(self, obj, field, lang=u'', format=defaults.FIELD_FORMAT):
+        """Node initialization"""
         self.object = obj
         self.field = field
         if not lang:
@@ -47,7 +49,7 @@ class PolyglotTransNode(template.Node):
         self.format = format
 
     def render(self, context):
-        print self.field
+        """Render node"""
         try:
             tfield = format_field_name(self.field, language=self.lang)
             return getattr(context[self.object], tfield)
