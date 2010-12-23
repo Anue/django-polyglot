@@ -1,4 +1,4 @@
-çfrom django.utils import translation
+from django.utils import translation
 from polyglot import defaults
 
 def format_field_name(normalized_field_name,
