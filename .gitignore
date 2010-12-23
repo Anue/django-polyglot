@@ -8,3 +8,5 @@
 .pydevproject
 .ropeproject
 logs/
+example/polyglot
+example/books.sqlite3
