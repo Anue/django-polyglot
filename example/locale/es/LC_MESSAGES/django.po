@@ -21,3 +21,7 @@ msgstr "Descripción"
 #: books/templates/books/books.html:15
 msgid "ISBN"
 msgstr "ISBN"
+
+#: books/templates/books/books.html:7,10
+msgid "Books"
+msgstr "Libros"
