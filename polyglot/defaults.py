@@ -15,3 +15,6 @@ GETTER_PREFIX  = getattr(settings, "POLYGLOT_GETTER_PREFIX", 'get')
 # default prefix for methods created by the decorators
 # methods will be named SETTER_PREFIX + _ + <field_name>
 SETTER_PREFIX  = getattr(settings, "POLYGLOT_SETTER_PREFIX", 'set')
+
+# name of the GET param that will force current language
+FORCE_LANG_PARAM  = getattr(settings, "POLYGLOT_FORCE_LANG_PARAM", 'lang')
